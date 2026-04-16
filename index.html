@@ -1,1 +1,32 @@
-<h1>Działa 🔥</h1>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>CoToZaMuza</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h2>Zgadnij piosenkę 🎵</h2>
+
+<button onclick="playSong()">Play</button>
+<button onclick="skip()">Skip</button>
+
+<br><br>
+
+<input id="input" placeholder="Wpisz tytuł...">
+<button onclick="check()">Zgadnij</button>
+
+<p id="result"></p>
+
+<div id="player"></div>
+
+<script src="songs.js"></script>
+<script src="script.js"></script>
+
+<!-- YouTube API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+</body>
+</html>
