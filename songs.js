@@ -1,3 +1,3 @@
 const songs = [
-    {id: "dQw4w9WgXcQ", title: "pierwsza piosenka", artist: "badexx"}
+    {src: "songs/EKSKLUZYWNY_GŁÓD.mp3", title: "EKSLUZYWNY GŁÓD", artist: "Young igi"}
 ];

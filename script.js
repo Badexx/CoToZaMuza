@@ -1,61 +1,43 @@
-let player;
+let audio = document.getElementById("audio");
 let currentSong;
-let playerReady = false;
 
-let attempts = [0.1, 1, 2, 4, 8];
+
+let attempts = [0.5, 1, 2, 4, 8, 16];
 let attemptIndex = 0;
 let gameOver = false;
-let pendingPlay = false;
+
 
 // INIT
 function initGame() {
     currentSong = songs[0];
+    audio.src = currentSong.src;
+    audio.load();
+
+    document.getElementById("level").innerText =
+        "poziom: " + (attemptIndex + 1) + "/6";
+
+    document.getElementById("time").innerText =
+        "Czas: " + attempts[attemptIndex] + " sekundy";
 }
 initGame();
 
-// YouTube API init
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        height: '200', // na test NIE 0
-        width: '300',
-        videoId: currentSong.id,
-        events: {
-            onReady: onPlayerReady
-        }
-    });
-}
-
-// Player ready
-function onPlayerReady() {
-    console.log("Player gotowy");
-    playerReady = true;
-}
-
-// PLAY fragment
+// PLAY 
 function playSong() {
     console.log("klik");
-
-    if (!playerReady) {
-        console.log("Player jeszcze nie gotowy");
-        pedningPlay = true;
-        return;
-    }
-
     if (gameOver) return;
 
-    console.log(player);
-    console.log(currentSong.id);
 
-    player.loadVideoById(currentSong.id, 0);
-    player.unMute();        // 🔥 kluczowe
-    player.setVolume(100);  // 🔥 kluczowe
-    player.playVideo();
-
+    audio.currentTime = 0;
+    audio.play().catch((err) => {
+        console.warn("Audio play blocked:", err);
+        document.getElementById("result").innerText =
+            "Odtwarzanie zablokowane przez przeglądarkę.";
+    });
+    
     setTimeout(() => {
-        player.pauseVideo();
+        audio.pause();
     }, attempts[attemptIndex] * 1000);
-
-    attemptIndex++;
+    
 }
 
 // SKIP
@@ -74,6 +56,7 @@ function skip() {
 // CHECK
 function check() {
     if (gameOver) return;
+    
 
     let input = document.getElementById("input").value.toLowerCase();
     let correct = currentSong.title.toLowerCase();
@@ -81,15 +64,22 @@ function check() {
     if (input === correct) {
         win();
     } else {
-        document.getElementById("result").innerText = "Źle ❌";
-        attemptIndex++;
-
         if (attemptIndex >= attempts.length) {
             lose();
+        } 
+        else {
+        document.getElementById("result").innerText = "Źle ❌";
+        attemptIndex++;
+        document.getElementById("level").innerText =
+        "poziom: " + (attemptIndex + 1) + "/6";
+        document.getElementById("time").innerText =
+        "Czas: " + attempts[attemptIndex] + " sekundy";
         }
+        
     }
 
     document.getElementById("input").value = "";
+    
 }
 
 // WIN
