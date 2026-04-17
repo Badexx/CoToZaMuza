@@ -5,12 +5,54 @@ body {
     color: white;
 }
 
-input {
+#input {
+    transform: translate(652px, 0px);
+    padding: 8px;
+    width: 400px;
+}
+#input2 {
+    transform: translate(150px, 40px);
+    padding: 8px;
+    width: 400px;
+}
+#input3 {
+    transform: translate(-275px, 80px);
+    padding: 8px;
+    width: 400px;
+}
+#input4 {
+    transform: translate(-699px, 120px);
+    padding: 8px;
+    width: 400px;
+}
+#input5 {
+    transform: translate(189px, 120px);
+    padding: 8px;
+    width: 400px;
+}
+#input6 {
+    transform: translate(-236px, 160px);
     padding: 8px;
     width: 400px;
 }
 
-button {
+
+#playButton {
+    transform: translate(-20px, 0px);
+    padding: 15px;
+    margin: 5px;
+    color: rgb(5, 146, 5)
+}
+#skipButton {
+    transform: translate(-20px, 0px);
+    padding: 15px;
+    margin: 5px;
+    color: rgb(177, 177, 11)
+}
+#checkButton {
+    transform: translate(650px, 0px);
     padding: 8px;
-    margin: 6px;
+    margin: 5px;
+    color: blueviolet
+
 }

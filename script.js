@@ -40,20 +40,8 @@ function playSong() {
     
 }
 
-// SKIP
-function skip() {
-    if (gameOver) return;
 
-    attemptIndex++;
-
-    if (attemptIndex >= attempts.length) {
-        lose();
-    }
-
-    document.getElementById("result").innerText = "Skip";
-}
-
-// CHECK
+// ZGADNIJ
 function check() {
     if (gameOver) return;
     
@@ -64,12 +52,12 @@ function check() {
     if (input === correct) {
         win();
     } else {
+        attemptIndex++;
         if (attemptIndex >= attempts.length) {
             lose();
-        } 
-        else {
+        }
+        else{
         document.getElementById("result").innerText = "Źle ❌";
-        attemptIndex++;
         document.getElementById("level").innerText =
         "poziom: " + (attemptIndex + 1) + "/6";
         document.getElementById("time").innerText =

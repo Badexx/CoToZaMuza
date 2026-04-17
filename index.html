@@ -10,16 +10,24 @@
 
 <h2>Zgadnij piosenkę 🎵</h2>
 
-<button onclick="playSong()">Play</button>
-<button onclick="skip()">Skip</button>
+<button id="playButton" onclick="playSong()">Play</button>
+<button id="skipButton" onclick="skip()">Skip</button>
 
 <br><br>
 
 <p id="level"></p>
 <p id="time"></p>
 
-<input id="input" placeholder="Wpisz tytuł...">
-<button onclick="check()">Zgadnij</button>
+<input id="input" placeholder="Wpisz tytuł... (podejście 1)">
+
+<button id="checkButton" onclick="check()">Zgadnij</button>
+<input id="input2" placeholder="Wpisz tytuł... (podejście 2)">
+<input id="input3" placeholder="Wpisz tytuł... (podejście 3)">
+<input id="input4" placeholder="Wpisz tytuł... (podejście 3)">
+<input id="input5" placeholder="Wpisz tytuł... (podejście 4)">
+<input id="input6" placeholder="Wpisz tytuł... (podejście 5)">
+
+
 
 <p id="result"></p>
 
