@@ -4,13 +4,37 @@ body {
     background: #111;
     color: white;
 }
+h2{
+    margin-top: 20px;
+    font-size: 80px;
+}
 
+.buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px; 
+}
+#checkButton {
+    padding: 20px;
+    margin: 0px;
+    color: white;
+    background-color: rgb(60, 60, 61);
+    border-color: #000000;
+}
+#nextButton {
+    padding: 30px;
+    margin: 0px;
+    color: white;
+    background-color: rgb(60, 60, 61);
+    border-color: #000000;
+}
 .inputs {
     display: flex;
-    flex-direction: column; /* jedno pod drugim */
-    gap: 10px;              /* odstęp między nimi */
+    flex-direction: column; 
+    gap: 10px;              
     width: 300px;
-    margin: 50px auto;      /* wyśrodkowanie na stronie */
+    margin: 20px auto;     
     align-items: center;
 }
 
@@ -28,19 +52,11 @@ body {
 }
 
 #playButton {
-    transform: translate(-20px, 0px);
-    padding: 15px;
-    margin: 5px;
-    color: rgb(5, 146, 5);
+    justify-content: center;
+    padding: 40px;
+    margin: -25px;
+    color: white;
+    background-color: rgb(74, 216, 74);
+    border-color: #0d9c15;
 }
-#skipButton {
-    transform: translate(-20px, 0px);
-    padding: 15px;
-    margin: 5px;
-    color: rgb(177, 177, 11);
-}
-#checkButton {
-    padding: 10px 18px;
-    margin: 0 auto 5px auto;
-    display: block;
-}
+

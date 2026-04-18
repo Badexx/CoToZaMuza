@@ -8,19 +8,22 @@
 
 <body>
 
-<h2>Zgadnij piosenkę 🎵</h2>
+<h2>🎵 CoToZaMuza 🎵</h2>
 
 <button id="playButton" onclick="playSong()">Play</button>
-<button id="skipButton" onclick="next()">Następna</button>
+
 
 <br><br>
 
 <p id="level"></p>
 <p id="time"></p>
 
+<div class="buttons">
+    <button id="checkButton" onclick="check()">Zgadnij</button>
+    <button id="nextButton" onclick="next()">Następna</button>
+</div>
 
 <div class="inputs">
-    <button id="checkButton" onclick="check()">Zgadnij</button>
     <input class="guess" placeholder="Wpisz tytuł... (podejście 1)">
     <input class="guess" placeholder="Wpisz tytuł... (podejście 2)">
     <input class="guess" placeholder="Wpisz tytuł... (podejście 3)">
