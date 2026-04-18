@@ -11,25 +11,28 @@
 <h2>Zgadnij piosenkę 🎵</h2>
 
 <button id="playButton" onclick="playSong()">Play</button>
-<button id="skipButton" onclick="skip()">Skip</button>
+<button id="skipButton" onclick="next()">Następna</button>
 
 <br><br>
 
 <p id="level"></p>
 <p id="time"></p>
 
-<input id="input" placeholder="Wpisz tytuł... (podejście 1)">
 
-<button id="checkButton" onclick="check()">Zgadnij</button>
-<input id="input2" placeholder="Wpisz tytuł... (podejście 2)">
-<input id="input3" placeholder="Wpisz tytuł... (podejście 3)">
-<input id="input4" placeholder="Wpisz tytuł... (podejście 3)">
-<input id="input5" placeholder="Wpisz tytuł... (podejście 4)">
-<input id="input6" placeholder="Wpisz tytuł... (podejście 5)">
+<div class="inputs">
+    <button id="checkButton" onclick="check()">Zgadnij</button>
+    <input class="guess" placeholder="Wpisz tytuł... (podejście 1)">
+    <input class="guess" placeholder="Wpisz tytuł... (podejście 2)">
+    <input class="guess" placeholder="Wpisz tytuł... (podejście 3)">
+    <input class="guess" placeholder="Wpisz tytuł... (podejście 4)">
+    <input class="guess" placeholder="Wpisz tytuł... (podejście 5)">
+    <input class="guess" placeholder="Wpisz tytuł... (podejście 6)">
+</div>
 
 
 
 <p id="result"></p>
+<button id="playFullButton" class="hidden" onclick="playStopFullSong()">Odtwórz całą piosenkę</button>
 
 <div id="player"></div>
 <audio id="audio"></audio>

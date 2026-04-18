@@ -2,19 +2,28 @@ let audio = document.getElementById("audio");
 let currentSong;
 
 
-let attempts = [0.5, 1, 2, 4, 8, 16];
+let attempts = [1, 2, 3, 5, 8, 16];
 let attemptIndex = 0;
 let gameOver = false;
+
+let inputs = document.querySelectorAll(".guess");
+let currentInputIndex = 0;
 
 
 // INIT
 function initGame() {
-    currentSong = songs[0];
+    currentSong = songs[Math.floor(Math.random() * songs.length)];
     audio.src = currentSong.src;
     audio.load();
 
+    inputs.forEach((input, index) => {
+        if (index !== 0) {
+            input.disabled = true;
+        }
+    });
+
     document.getElementById("level").innerText =
-        "poziom: " + (attemptIndex + 1) + "/6";
+        "podejście: " + (attemptIndex + 1) + "/6";
 
     document.getElementById("time").innerText =
         "Czas: " + attempts[attemptIndex] + " sekundy";
@@ -40,41 +49,95 @@ function playSong() {
     
 }
 
+function next() {
+    if (gameOver) resetGame();
+
+    let currentIndex = songs.indexOf(currentSong);
+    let nextIndex = Math.floor(Math.random() * songs.length);
+    while (nextIndex === currentIndex) {
+        nextIndex = Math.floor(Math.random() * songs.length);
+    }
+    currentSong = songs[nextIndex];
+    audio.src = currentSong.src;
+    audio.load();
+    resetGame();
+}
+
+let isActive = false;
+const playFullButton = document.getElementById("playFullButton");
+
+function playStopFullSong() {
+    isActive = !isActive;
+    if (isActive) {
+        playFullButton.innerText = "Zatrzymaj";
+        playFullSong();
+        console.log("Odtwarzanie pełnej piosenki");
+    } else {
+        playFullButton.innerText = "Odtwórz całą piosenkę";
+        audio.pause();
+        console.log("Zatrzymano odtwarzanie pełnej piosenki");
+    }
+}
+
+function playFullSong() {
+    audio.currentTime = 0;
+    audio.play().catch((err) => {
+        console.warn("Audio play blocked:", err);
+        document.getElementById("result").innerText =
+            "Odtwarzanie zablokowane przez przeglądarkę.";
+    });
+    
+}
+
+
+
 
 // ZGADNIJ
 function check() {
     if (gameOver) return;
     
 
-    let input = document.getElementById("input").value.toLowerCase();
-    let correct = currentSong.title.toLowerCase();
+    let input = inputs[currentInputIndex];
+    let value = input.value.toLowerCase().trim();
+    let correct = currentSong.title.toLowerCase().trim();
 
-    if (input === correct) {
+    if (value === correct) {
+        input.style.color = "green";
+        input.value = "✔️ ZGADŁEŚ";
         win();
-    } else {
+        return;
+    } 
+    else 
+    {
+        input.style.color = "red";
+        input.value = "❌ NIE ZGADŁEŚ";
+        input.disabled = true;
+        currentInputIndex++;
         attemptIndex++;
-        if (attemptIndex >= attempts.length) {
+        if (attemptIndex >= attempts.length && currentInputIndex >= inputs.length) {
             lose();
-        }
-        else{
-        document.getElementById("result").innerText = "Źle ❌";
-        document.getElementById("level").innerText =
-        "poziom: " + (attemptIndex + 1) + "/6";
-        document.getElementById("time").innerText =
-        "Czas: " + attempts[attemptIndex] + " sekundy";
-        }
-        
-    }
+            return;
+        } else {
+            document.getElementById("result").innerText = "Źle ❌";
+            document.getElementById("level").innerText =
+                "podejście: " + (attemptIndex + 1) + "/6";
+            document.getElementById("time").innerText =
+                "Czas: " + attempts[attemptIndex] + " sekundy";
 
-    document.getElementById("input").value = "";
-    
+            let nextInput = inputs[currentInputIndex];
+            nextInput.disabled = false;
+            nextInput.focus();
+        }
+    }
 }
+
 
 // WIN
 function win() {
     gameOver = true;
     document.getElementById("result").innerText =
         "🎉 Wygrana! To było: " + currentSong.title + " - " + currentSong.artist;
+    document.getElementById("playFullButton").classList.remove("hidden");
 }
 
 // LOSE
@@ -82,4 +145,26 @@ function lose() {
     gameOver = true;
     document.getElementById("result").innerText =
         "❌ Przegrana! To było: " + currentSong.title + " - " + currentSong.artist;
+    document.getElementById("playFullButton").classList.remove("hidden"); 
+}
+
+function resetGame() {
+    gameOver = false;
+    inputs.forEach((input, index) => {
+        input.value = "";
+        input.placeholder = "Wpisz tytuł... (podejście " + (index + 1) + ")";
+        input.style.color = "black";
+        input.disabled = index !== 0;
+    });
+    currentInputIndex = 0;
+    attemptIndex = 0;
+    gameOver = false;
+    document.getElementById("level").innerText =
+        "podejście: " + (attemptIndex + 1) + "/6";
+
+    document.getElementById("time").innerText =
+        "Czas: " + attempts[attemptIndex] + " sekundy";
+
+    document.getElementById("result").innerText = "";   
+    document.getElementById("playFullButton").classList.add("hidden");
 }

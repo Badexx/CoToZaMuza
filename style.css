@@ -5,54 +5,42 @@ body {
     color: white;
 }
 
-#input {
-    transform: translate(652px, 0px);
-    padding: 8px;
-    width: 400px;
-}
-#input2 {
-    transform: translate(150px, 40px);
-    padding: 8px;
-    width: 400px;
-}
-#input3 {
-    transform: translate(-275px, 80px);
-    padding: 8px;
-    width: 400px;
-}
-#input4 {
-    transform: translate(-699px, 120px);
-    padding: 8px;
-    width: 400px;
-}
-#input5 {
-    transform: translate(189px, 120px);
-    padding: 8px;
-    width: 400px;
-}
-#input6 {
-    transform: translate(-236px, 160px);
-    padding: 8px;
-    width: 400px;
+.inputs {
+    display: flex;
+    flex-direction: column; /* jedno pod drugim */
+    gap: 10px;              /* odstęp między nimi */
+    width: 300px;
+    margin: 50px auto;      /* wyśrodkowanie na stronie */
+    align-items: center;
 }
 
+.guess {
+    display: block;
+    width: 500px;
+    
+    padding: 10px;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
 
 #playButton {
     transform: translate(-20px, 0px);
     padding: 15px;
     margin: 5px;
-    color: rgb(5, 146, 5)
+    color: rgb(5, 146, 5);
 }
 #skipButton {
     transform: translate(-20px, 0px);
     padding: 15px;
     margin: 5px;
-    color: rgb(177, 177, 11)
+    color: rgb(177, 177, 11);
 }
 #checkButton {
-    transform: translate(650px, 0px);
-    padding: 8px;
-    margin: 5px;
-    color: blueviolet
-
+    padding: 10px 18px;
+    margin: 0 auto 5px auto;
+    display: block;
 }
