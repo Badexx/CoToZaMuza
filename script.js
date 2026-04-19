@@ -118,7 +118,6 @@ function check() {
             lose();
             return;
         } else {
-            document.getElementById("result").innerText = "Źle ❌";
             document.getElementById("level").innerText =
                 "podejście: " + (attemptIndex + 1) + "/6";
             document.getElementById("time").innerText =
@@ -131,6 +130,27 @@ function check() {
     }
 }
 
+
+function openSettings() {
+    console.log("Otwieranie ustawień...");
+    document.getElementById("settings-overlay").classList.remove("hidden");
+}
+
+function closeSettings() {
+    console.log("Zamykanie ustawień...");
+    document.getElementById("settings-overlay").classList.add("hidden");
+}
+
+function openHowToPlay() {
+    console.log("Otwieranie instrukcji...");
+    document.getElementById("howToPlay-overlay").classList.remove("hidden");
+}
+
+
+function closeHowToPlay() {
+    console.log("Zamykanie instrukcji...");
+    document.getElementById("howToPlay-overlay").classList.add("hidden");
+}
 
 // WIN
 function win() {
