@@ -23,9 +23,22 @@
                 <p>2. Wpisz swoją odpowiedź w polach tekstowych (masz 6 prób! Każda pomyłka odblokowuje kolejne pola oraz dłuższą muzykę).</p>
                 <p>3. Kliknij "Zgadnij", aby sprawdzić swoją odpowiedź.</p>
                 <p>4. Kliknij "Następna", aby przejść do kolejnej piosenki.</p>
+                <p>5. Po 6 próbach możesz odsłuchać całą piosenkę, klikając "Odtwórz całą piosenkę".</p>
+                <h4>Uwaga: Wielkość liter nie ma znaczenia, natomiast interpunkcja jest istotna. Link do Spotify z bazą piosenek jest dostępny w ustawieniach.</h4>
             </div>
         </div>
+        <!-- Spotify Playlist -->
         <a href="https://open.spotify.com/playlist/6Ujyim4mJN2tkDgRHqJkNo?si=rK9NTCSBSFav95ZZIsZMSA" class="spotifyLink" target="_blank">Spotify Playlist</a>
+        <!-- Aktualnosci? -->
+        <button id="AktualnosciButton" onclick="openAktualnosci()">AKTUALNOŚCI</button>
+        <div id="aktualnosci-overlay" class="hidden">
+            <div id="aktualnosci" class="aktualnosci-modal">
+                <button class="close-settings" onclick="closeAktualnosci()">×</button>
+                <h4>AKTUALNOŚCI</h4>
+                <p>Obecnie w bazie danych znajduje się 42/147 piosenek.</p>
+                <p>Przyciski mają animacje najeżdżania oraz klikania.</p>
+            </div>
+        </div>
     </div>
 </div>
 

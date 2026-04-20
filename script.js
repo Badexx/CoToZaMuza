@@ -152,6 +152,17 @@ function closeHowToPlay() {
     document.getElementById("howToPlay-overlay").classList.add("hidden");
 }
 
+function openAktualnosci() {
+    console.log("Otwieranie aktualności...");
+    document.getElementById("aktualnosci-overlay").classList.remove("hidden");
+}
+
+
+function closeAktualnosci() {
+    console.log("Zamykanie aktualności...");
+    document.getElementById("aktualnosci-overlay").classList.add("hidden");
+}
+
 // WIN
 function win() {
     gameOver = true;
