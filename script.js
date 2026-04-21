@@ -30,6 +30,38 @@ function initGame() {
 }
 initGame();
 
+// Dodaj sugestie dla pól zgadywania
+inputs.forEach((input, index) => {
+    let suggestionsDiv = input.nextElementSibling;
+    input.addEventListener("input", () => {
+        let value = input.value.toLowerCase().trim();
+        suggestionsDiv.innerHTML = "";
+        if (value.length < 2) return;
+        let matches = songs.filter(song =>
+            song.title.toLowerCase().startsWith(value)
+        );
+        matches.slice(0, 5).forEach(song => {
+            let div = document.createElement("div");
+            div.classList.add("suggestion");
+            div.innerText = song.title;
+            div.onclick = () => {
+                input.value = song.title;
+                suggestionsDiv.innerHTML = "";
+            };
+            suggestionsDiv.appendChild(div);
+        });
+    });
+});
+
+let volumeSlider = document.getElementById("volume");
+
+volumeSlider.addEventListener("input", () => {
+    audio.volume = volumeSlider.value; // 0–1
+});
+
+
+
+
 // PLAY 
 function playSong() {
     console.log("klik");
@@ -186,6 +218,7 @@ function resetGame() {
         input.placeholder = "Wpisz tytuł... (podejście " + (index + 1) + ")";
         input.style.color = "black";
         input.disabled = index !== 0;
+        input.nextElementSibling.innerHTML = ""; // wyczyść sugestie
     });
     currentInputIndex = 0;
     attemptIndex = 0;

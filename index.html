@@ -35,8 +35,11 @@
             <div id="aktualnosci" class="aktualnosci-modal">
                 <button class="close-settings" onclick="closeAktualnosci()">×</button>
                 <h4>AKTUALNOŚCI</h4>
+                <p>20.04.2026</p>
                 <p>Obecnie w bazie danych znajduje się 42/147 piosenek.</p>
                 <p>Przyciski mają animacje najeżdżania oraz klikania.</p>
+                <p>21.04.2026</p>
+                <p>Dodano pasek głośności oraz podpowiadanie piosenek podczas wyszukiwania</p>
             </div>
         </div>
     </div>
@@ -49,6 +52,8 @@
 
 <button id="playButton" onclick="playSong()">▶</button>
 
+<label>🕪</label>
+<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
 
 <br><br>
 
@@ -60,13 +65,21 @@
     <button id="nextButton" onclick="next()">Następna</button>
 </div>
 
+
+
 <div class="inputs">
     <input class="guess" placeholder="Wpisz tytuł... (podejście 1)">
+    <div class="suggestions"></div>
     <input class="guess" placeholder="Wpisz tytuł... (podejście 2)">
+    <div class="suggestions"></div>
     <input class="guess" placeholder="Wpisz tytuł... (podejście 3)">
+    <div class="suggestions"></div>
     <input class="guess" placeholder="Wpisz tytuł... (podejście 4)">
+    <div class="suggestions"></div>
     <input class="guess" placeholder="Wpisz tytuł... (podejście 5)">
+    <div class="suggestions"></div>
     <input class="guess" placeholder="Wpisz tytuł... (podejście 6)">
+    <div class="suggestions"></div>
 </div>
 
 

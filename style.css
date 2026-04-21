@@ -69,13 +69,30 @@ a:hover {
     width: 500px;
     border-radius: 10px;
     padding: 10px;
+    margin: -4px;
     font-size: 20px;
     box-sizing: border-box;
+}
+
+.suggestion {
+    background: #333;
+    color: white;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px 0;
+    width: 500px;
+    text-align: left;
+}
+
+.suggestion:hover {
+    background: #555;
 }
 
 
 
 #playButton {
+    font-size: 25px;
     justify-content: center;
     border-radius: 40px;
     padding: 40px;
@@ -235,6 +252,24 @@ a:hover {
     box-sizing: border-box;
 
 }
+
+label {
+    position: fixed;
+    font-size: 35px;
+    top: 14px;
+    left: 50px;
+    width: 100px;
+    color: white;
+}
+input[id="volume"] {
+    position: fixed;
+    top: 33px;
+    left: 125px;
+    width: 130px;
+}
+
+
+
 
 
 .hidden {
