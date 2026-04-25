@@ -2,7 +2,7 @@ let audio = document.getElementById("audio");
 let currentSong;
 
 
-let attempts = [1, 2, 3, 5, 8, 16];
+let attempts = [0.5, 1.5, 3, 5, 8, 16];
 let attemptIndex = 0;
 let gameOver = false;
 
@@ -36,7 +36,7 @@ inputs.forEach((input, index) => {
     input.addEventListener("input", () => {
         let value = input.value.toLowerCase().trim();
         suggestionsDiv.innerHTML = "";
-        if (value.length < 2) return;
+        if (value.length < 1) return;
         let matches = songs.filter(song =>
             song.title.toLowerCase().startsWith(value)
         );
@@ -135,14 +135,34 @@ function check() {
 
     if (value === correct) {
         input.style.color = "green";
-        input.value = "✔️ ZGADŁEŚ";
+        input.value = "✔️ ZGADŁEŚ - " + input.value;
         win();
         return;
     } 
-    else 
+    else if (value === "" || value === "nie wiem") {
+        input.style.color = "orange";
+        input.value = "POMINIĘTE";
+        input.disabled = true;
+        currentInputIndex++;
+        attemptIndex++;
+        if (attemptIndex >= attempts.length && currentInputIndex >= inputs.length) {
+            lose();
+            return;
+        } else {
+            document.getElementById("level").innerText =
+                "podejście: " + (attemptIndex + 1) + "/6";
+            document.getElementById("time").innerText =
+                "Czas: " + attempts[attemptIndex] + " sekundy";
+
+            let nextInput = inputs[currentInputIndex];
+            nextInput.disabled = false;
+            nextInput.focus();
+        }
+    }
+    else
     {
         input.style.color = "red";
-        input.value = "❌ NIE ZGADŁEŚ";
+        input.value = "❌ NIE ZGADŁEŚ - " + input.value;
         input.disabled = true;
         currentInputIndex++;
         attemptIndex++;
